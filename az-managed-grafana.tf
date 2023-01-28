@@ -24,14 +24,14 @@ resource "azurerm_resource_group" "rg" {
 ##############################
 
 resource "azurerm_dashboard_grafana" "az-grafana" {
-  count				                      = length(var.az-grafana-name)
-  name                              = var.az-grafana-name[count.index]
-  resource_group_name               = azurerm_resource_group.rg.name
-  location                          = var.location
-  zone_redundancy_enabled           = var.az-grafana-zone-redundancy != "" ? var.az-grafana-zone-redundancy : "true"
-  api_key_enabled                   = var.az-grafana-api-key != "" ? var.az-grafana-api-key : "true"
-  deterministic_outbound_ip_enabled = var.az-grafana-outbound-ip != "" ? var.az-grafana-outbound-ip : "true"
-  public_network_access_enabled     = var.az-grafana-public-access != "" ? var.az-grafana-public-access : "false"
+  count				                        = length(var.az-grafana-name)
+  name                                = var.az-grafana-name[count.index]
+  resource_group_name                 = azurerm_resource_group.rg.name
+  location                            = var.location
+  zone_redundancy_enabled             = var.az-grafana-zone-redundancy != "" ? var.az-grafana-zone-redundancy : "true"
+  api_key_enabled                     = var.az-grafana-api-key != "" ? var.az-grafana-api-key : "true"
+  deterministic_outbound_ip_enabled   = var.az-grafana-outbound-ip != "" ? var.az-grafana-outbound-ip : "true"
+  public_network_access_enabled       = var.az-grafana-public-access != "" ? var.az-grafana-public-access : "false"
 
   identity {
     type = var.az-grafana-identity
