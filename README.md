@@ -17,7 +17,7 @@ In this Session, I will demonstrate, __Count and If Else with Terraform and DevO
 | __OUT OF SCOPE:-__ |
 | --------- |
 | __Azure DevOps Pipeline Code Snippet Explanation.__ |
-| __If you are interested to understand the Pipeline Code Snippet, please refer my blogs in [Terraform](https://dev.to/arindam0310018/series/20638) Series.__ |
+| __If you are interested to understand the Pipeline Code Snippet, please refer my other blogs in [Terraform](https://dev.to/arindam0310018/series/20638) Series.__ |
 
 
 | __HOW DOES MY CODE PLACEHOLDER LOOKS LIKE:-__ |
@@ -302,14 +302,14 @@ resource "azurerm_role_assignment" "az-rbac-grafana-viewer" {
 
 | __EXPLANATION:-__ |
 | --------- |
-| The __"az-managed-grafana.tf"__ file contains:- |
-| 1. __Create one or more AAD Group using terraform "count" and "length". The Names of the group are passed as an array - list(string).__ |
+| The __"az-managed-grafana.tf"__ file will perform below:- |
+| 1. __Create one or more AAD Group(s) using terraform "count" and "length". The Names of the AAD group(s) are passed as an array - list(string).__ |
 | 2. __The owners of the AAD Group(s) are referenced in Terraform Data block as they already exists.__ |
 | 3. __Create a single resource group.__  |
-| 4. __Create one or more Azure Managed Grafana using terraform "count" and "length". The Names of the Azure Managed Grafana are passed as an array - list(string).__ |
-| 5. __The resource group under which one or more Azure Managed Grafana gets deployed is referenced as implicit dependency.__ |
+| 4. __Create one or more Azure Managed Grafana instance(s) using terraform "count" and "length". The Names of the Azure Managed Grafana instance(s) are passed as an array - list(string).__ |
+| 5. __The resource group under which one or more Azure Managed Grafana instance(s) gets deployed is referenced as "Implicit Dependency".__ |
 | 6. __If else block is used for - "zone redundancy", "api key", "outbound IP" and "public network access".__ |
-| 7. __The id of each Azure Managed Grafana Instance and Object id of each AAD Group is stored as terraform output. RBAC was then created by counting output ids of Azure Managed Grafana which is the scope. Role definition defined here is static (For Example - "Grafana Admin") which is mapped to Object id of the Azure AD Group referenced here as array index.__ |
+| 7. __The id of each Azure Managed Grafana Instance and Object id of each AAD Group is stored as "Terraform Output". RBAC was then created by counting output ids of Azure Managed Grafana instance(s) which is the scope. Role definition defined here is static (For Example - "Grafana Admin") which is mapped to Object id of the Azure AD Group referenced here as array index.__ |
 
 
 | __IF ELSE EXAMPLE AND EXPLANATION:-__ |
@@ -320,7 +320,7 @@ zone_redundancy_enabled = var.az-grafana-zone-redundancy != "" ? var.az-grafana-
 
 ```
 
-__If the variable "var.az-grafana-zone-redundancy" is equal to NULL, then the value is "true". If not, then the value is what is defined for the variable.__
+__If the variable "var.az-grafana-zone-redundancy" is equal to NULL, then the value is "true". If not, then the value is, what is defined for the variable.__
 
 
 | __TERRAFORM (data.tf):-__ |
@@ -448,12 +448,12 @@ az-grafana-identity             = "SystemAssigned"
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/15y77v2m3dhnhw40xt2b.jpg) |
 | __Azure Managed Grafana Deployed:-__ |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0gepovolv9pnpzmg2dm2.jpg) |
-| __Azure Managed Grafana Configuration:- |
+| __Azure Managed Grafana Configuration:-__ |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gaokzaxjn6ualpr0ax0k.jpg) |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9ya4w6l6z4txjapi5lg6.jpg) |
 | __Azure AAD Group Deployed:-__ |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wfokcbbep0gun76vr4qm.jpg) |
-| __Role Assignments:- |
+| __Role Assignments:-__ |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9hoxzkghuhx2zqqskxft.jpg) |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/osam05lk0sa82zgi49no.jpg) |
 
@@ -461,3 +461,4 @@ az-grafana-identity             = "SystemAssigned"
 __Hope You Enjoyed the Session!!!__
 
 __Stay Safe | Keep Learning | Spread Knowledge__
+
