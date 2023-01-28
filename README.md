@@ -304,7 +304,7 @@ resource "azurerm_role_assignment" "az-rbac-grafana-viewer" {
 | --------- |
 | The __"az-managed-grafana.tf"__ file contains:- |
 | 1. __Create one or more AAD Group using terraform "count" and "length". The Names of the group are passed as an array - list(string).__ |
-| 2. __The owners of the AAD Group(s) are referenced in Terraform Data block as they already exists. |
+| 2. __The owners of the AAD Group(s) are referenced in Terraform Data block as they already exists.__ |
 | 3. __Create a single resource group.__  |
 | 4. __Create one or more Azure Managed Grafana using terraform "count" and "length". The Names of the Azure Managed Grafana are passed as an array - list(string).__ |
 | 5. __The resource group under which one or more Azure Managed Grafana gets deployed is referenced as implicit dependency.__ |
